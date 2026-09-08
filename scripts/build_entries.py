@@ -17,6 +17,8 @@ def check_chinese(text, path=""):
         for cn_char, th_repl in replacements.items():
             text = text.replace(cn_char, th_repl)
     return text
+
+def parse_md(path):
     text = path.read_text(encoding="utf-8").strip()
     lines = text.splitlines()
     header = lines[0].strip()
