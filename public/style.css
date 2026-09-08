@@ -3,7 +3,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Sarabun',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
 a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
+a:hover{text-decoration:none}
 
 /* nav */
 .nav{background:#fff;border-bottom:1px solid #e4ebe7;position:sticky;top:0;z-index:10}
@@ -13,7 +13,7 @@ a:hover{text-decoration:underline}
 .nav-links{display:flex;gap:20px}
 .nav-links a{font-size:14px;font-weight:600;color:var(--muted);padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
 .nav-links a.active{color:var(--accent);border-bottom-color:var(--accent)}
-.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover{color:var(--ink);text-decoration:none}
 
 .container{max-width:920px;margin:0 auto;padding:32px 24px}
 .section{margin-bottom:48px}
