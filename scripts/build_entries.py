@@ -6,7 +6,17 @@ from pathlib import Path
 ENTRIES_DIR = Path("content/entries")
 OUT = Path("public/entries.json")
 
-def parse_md(path):
+def check_chinese(text, path=""):
+    """Flag Chinese characters that should not appear in Thai content."""
+    import re
+    cn = re.findall(r'[\u4e00-\u9fff\u3400-\u4dbf]', text)
+    if cn:
+        print(f"  ⚠️ Chinese chars found in {path}: {cn}")
+        # auto-replace common mistakes
+        replacements = {"支持": "สนับสนุน", "關鍵": "กุญแจสำคัญ", "問題": "ปัญหา", "正確": "ถูกต้อง", "使用": "ใช้"}
+        for cn_char, th_repl in replacements.items():
+            text = text.replace(cn_char, th_repl)
+    return text
     text = path.read_text(encoding="utf-8").strip()
     lines = text.splitlines()
     header = lines[0].strip()
@@ -28,6 +38,11 @@ def parse_md(path):
     title_th = extract("TITLE")
     tldr = extract("TLDR")
     body = extract("BODY")
+
+    # check for Chinese characters and auto-replace
+    title_th = check_chinese(title_th, f"{path.name}:TITLE")
+    tldr = check_chinese(tldr, f"{path.name}:TLDR")
+    body = check_chinese(body, f"{path.name}:BODY")
 
     def hl(b, ml=220):
         first = b.strip().split("\n\n")[0].replace("\n"," ").strip()
