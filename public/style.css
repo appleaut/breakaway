@@ -1,7 +1,7 @@
 /* Breakaway — clean minimal theme with green accent */
 :root{--accent:#0d9668;--accent-dim:#b8dfd1;--bg:#f8faf9;--card:#fff;--ink:#1a2a1f;--muted:#6b7f73}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'IBM Plex Sans Thai',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+body{font-family:'Sarabun',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 
