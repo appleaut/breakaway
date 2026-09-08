@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>บทความทั้งหมด — Breakaway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/"><span class="brand-dot"></span><span class="brand-name">Breakaway</span></a>
+    <div class="nav-links">
+      <a href="/">หน้าแรก</a>
+      <a href="/articles.html" class="active">บทความทั้งหมด</a>
+      <a href="/about.html">เกี่ยวกับ</a>
+    </div>
+  </div>
+</nav>
+<main class="container">
+  <section class="section">
+    <div class="section-head"><h2>บทความทั้งหมด</h2></div>
+    <div id="entry-list" class="entry-list"></div>
+    <div class="load-more-wrap"><button id="load-more" class="btn">โหลดเพิ่ม</button></div>
+  </section>
+  <section id="article" style="display:none">
+    <button id="btn-back" class="btn btn-back">← กลับ</button>
+    <div class="article-meta"><span id="article-date"></span></div>
+    <h1 id="article-title" class="article-title"></h1>
+    <div id="article-tldr" class="tldr-box"></div>
+    <div id="article-body" class="article-body entry-body"></div>
+  </section>
+</main>
+<footer class="footer"><p>Breakaway © 2026 — โปรแกรมเมอร์หน้ากลม</p></footer>
+<script src="/data.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

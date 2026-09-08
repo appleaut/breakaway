@@ -1,0 +1,11 @@
+name = "breakaway"
+main = "public/index.js"
+compatibility_date = "2025-04-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[[custom_domains]]
+  zone_id = "9be7d8dd6d684c40a7b43319a476640a"
+  hostname = "breakaway.napawan.com"

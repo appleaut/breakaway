@@ -1,0 +1,66 @@
+/* Breakaway — clean minimal theme with green accent */
+:root{--accent:#0d9668;--accent-dim:#b8dfd1;--bg:#f8faf9;--card:#fff;--ink:#1a2a1f;--muted:#6b7f73}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans Thai',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* nav */
+.nav{background:#fff;border-bottom:1px solid #e4ebe7;position:sticky;top:0;z-index:10}
+.nav-inner{max-width:920px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:20px;color:var(--ink)}
+.brand-dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.nav-links{display:flex;gap:20px}
+.nav-links a{font-size:14px;font-weight:600;color:var(--muted);padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
+.nav-links a.active{color:var(--accent);border-bottom-color:var(--accent)}
+.nav-links a:hover{color:var(--ink)}
+
+/* container */
+.container{max-width:920px;margin:0 auto;padding:32px 24px}
+.section{margin-bottom:48px}
+.section-head h2{font-size:22px;font-weight:700;margin-bottom:20px;color:var(--ink)}
+
+/* cards */
+.entry-list{display:flex;flex-direction:column;gap:16px}
+.entry-card{background:var(--card);border-radius:12px;padding:24px;border:1px solid #e4ebe7;cursor:pointer;transition:.15s}
+.entry-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06);border-color:var(--accent-dim)}
+.entry-date{font-size:13px;color:var(--muted);margin-bottom:6px}
+.entry-title{font-size:18px;font-weight:700;line-height:1.4;margin-bottom:8px}
+.entry-highlight{font-size:14px;color:#4a5d52;line-height:1.6}
+
+/* article */
+.article-meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+.article-title{font-size:26px;font-weight:700;line-height:1.4;margin-bottom:16px}
+.article-body{font-size:16px;line-height:1.85;color:#2a3a2f}
+.article-body p{margin-bottom:16px}
+.article-body ul,.article-body ol{margin:12px 0 16px 24px}
+.article-body li{margin-bottom:6px}
+
+/* tldr */
+.tldr-box{background:#f0f7f4;border-left:4px solid var(--accent);border-radius:8px;padding:16px 20px;margin-bottom:24px}
+.tldr-box .tldr-label{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.tldr-list{list-style:none;padding:0}
+.tldr-list li{font-size:14px;color:#3a5044;padding:4px 0 4px 16px;position:relative}
+.tldr-list li::before{content:"•";position:absolute;left:0;color:var(--accent);font-weight:700}
+
+/* buttons */
+.btn{display:inline-block;padding:10px 24px;border-radius:8px;font-weight:600;font-size:14px;border:1px solid #d0ddd6;background:var(--card);color:var(--ink);cursor:pointer;transition:.15s}
+.btn:hover{background:#f0f7f4;border-color:var(--accent)}
+.btn-back{margin-bottom:24px}
+.load-more-wrap{text-align:center;margin-top:24px}
+
+/* footer */
+.footer{text-align:center;padding:32px 24px;color:var(--muted);font-size:13px;border-top:1px solid #e4ebe7}
+
+/* about */
+.about-section h1{font-size:26px;font-weight:700;margin-bottom:16px}
+.about-section h2{font-size:20px;font-weight:700;margin:28px 0 12px}
+.about-section p{font-size:16px;line-height:1.85;margin-bottom:12px;color:#2a3a2f}
+
+/* responsive */
+@media(max-width:640px){
+  .nav-inner{flex-direction:column;gap:12px}
+  .nav-links{width:100%;justify-content:space-between}
+  .container{padding:20px 16px}
+  .article-title{font-size:22px}
+}
