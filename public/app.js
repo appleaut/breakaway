@@ -18,7 +18,13 @@ function mdToHtml(md){
   return md.split(/\n\n+/).map(function(b){
     b=b.trim();if(!b)return"";
     if(b.match(/^### /m)){
-      return b.split(/\n/).filter(function(l){return l.trim()}).map(function(l){return"<h3>"+l.replace(/^###\s*/,"")+"</h3>"}).join("\n");
+      var ha=[],pa=[];
+      b.split(/\n/).forEach(function(l){
+        l=l.trim();if(!l)return;
+        if(/^### /.test(l))ha.push("<h3>"+l.replace(/^###\s*/,"")+"</h3>");
+        else pa.push(l);
+      });
+      return ha.join("\n")+(pa.length?"<p>"+pa.join("<br>")+"</p>":"");
     }
     if(b.match(/^- /m)){
       var items=b.split(/\n/).filter(function(l){return l.trim()}).map(function(l){return"<li>"+l.replace(/^-\s*/,"")+"</li>"});
