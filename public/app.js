@@ -17,6 +17,9 @@ function mdToHtml(md){
   if(!md)return"";
   return md.split(/\n\n+/).map(function(b){
     b=b.trim();if(!b)return"";
+    if(b.match(/^### /m)){
+      return b.split(/\n/).filter(function(l){return l.trim()}).map(function(l){return"<h3>"+l.replace(/^###\s*/,"")+"</h3>"}).join("\n");
+    }
     if(b.match(/^- /m)){
       var items=b.split(/\n/).filter(function(l){return l.trim()}).map(function(l){return"<li>"+l.replace(/^-\s*/,"")+"</li>"});
       return"<ul class='md-list'>"+items.join("")+"</ul>";
