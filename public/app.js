@@ -77,13 +77,15 @@ if(entryMatch){
     entries=(d.entries||[]).sort(function(a,b){return a.date<b.date?1:-1});
     var container=document.getElementById("entry-list");
     if(!container)return;
-    var sectionHead=container.closest("section");
-    var h2=sectionHead?sectionHead.querySelector("h2"):null;
-    var isHome=h2&&h2.textContent.indexOf("ล่าสุด")>=0;
-    renderEntries(container, isHome?PAGE_HOME:PAGE_SIZE);
-    if(!isHome){
-      var btn=document.getElementById("load-more");
-      if(btn&&entries.length>PAGE_SIZE)btn.style.display="inline-block";
+    var btn=document.getElementById("load-more");
+    if(btn){
+      // articles page: paginate with 5 per page
+      renderEntries(container, PAGE_SIZE);
+      if(entries.length>PAGE_SIZE)btn.style.display="inline-block";
+      btn.onclick=function(){renderEntries(container, shown+PAGE_SIZE);if(shown>=entries.length)btn.style.display="none";};
+    }else{
+      // home page: show ALL articles
+      renderEntries(container, entries.length);
     }
   });
 }
