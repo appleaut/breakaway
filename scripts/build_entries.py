@@ -61,7 +61,20 @@ def parse_md(path):
 
 def main():
     md_files = sorted(ENTRIES_DIR.glob("entry-*.md"))
-    entries = [parse_md(f) for f in md_files]
+    entries = []
+    used = {}
+    for f in md_files:
+        e = parse_md(f)
+        if not e["date"]:
+            print(f"  ⚠️ SKIP {f.name}: bad header (need '# YYYY-MM-DD — title'), date={e['date']!r}")
+            continue
+        # ensure a readable id: if the title slug is empty (all-Thai title),
+        # fall back to a per-date counter so the id never ends in a dangling dash
+        slug = e["id"].split("-", 2)[2] if e["id"].startswith("entry-") else ""
+        if not slug or slug.endswith("-"):
+            used[e["date"]] = used.get(e["date"], 0) + 1
+            e["id"] = f"entry-{e['date']}-{used[e['date']]:02d}"
+        entries.append(e)
     entries.sort(key=lambda e: e.get("date",""))
     OUT.write_text(json.dumps({"entries": entries}, ensure_ascii=False, indent=2), encoding="utf-8")
     for e in entries:
