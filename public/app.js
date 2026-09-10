@@ -67,9 +67,9 @@ if(entryMatch){
     document.getElementById("list-section").style.display="none";
     document.title = L(match.title) + " — Breakaway";
   });
-  // back button
+  // back button — always return to home
   var btnBack=document.getElementById("btn-back");
-  if(btnBack) btnBack.addEventListener("click",function(ev){ev.preventDefault();window.location.href="/articles.html"});
+  if(btnBack) btnBack.addEventListener("click",function(ev){ev.preventDefault();window.location.href="/"});
 } else {
   // List page (home or articles)
   fetch("/entries.json").then(function(r){return r.json()}).then(function(d){
