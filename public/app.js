@@ -43,10 +43,9 @@ function cardHtml(e){
 }
 
 function renderEntries(container, limit){
-  container.innerHTML="";
-  shown=0;
+  if(limit===undefined||limit<shown){container.innerHTML="";shown=0;}
   var n=Math.min(limit||entries.length, entries.length);
-  for(var i=0;i<n;i++){container.appendChild(el(cardHtml(entries[i])));shown++}
+  for(var i=shown;i<n;i++){container.appendChild(el(cardHtml(entries[i])));shown++}
 }
 
 // Check if we're on an /entry/<id> page
@@ -84,8 +83,24 @@ if(entryMatch){
       if(entries.length>PAGE_SIZE)btn.style.display="inline-block";
       btn.onclick=function(){renderEntries(container, shown+PAGE_SIZE);if(shown>=entries.length)btn.style.display="none";};
     }else{
-      // home page: show ALL articles
-      renderEntries(container, entries.length);
+      // home page: lazy-load — show the first batch, then more as user scrolls
+      renderEntries(container, PAGE_SIZE);
+      var sentinel=document.getElementById("load-sentinel");
+      if(sentinel&&entries.length>PAGE_SIZE){
+        if("IntersectionObserver" in window){
+          var io=new IntersectionObserver(function(es){
+            es.forEach(function(en){
+              if(en.isIntersecting){
+                renderEntries(container, shown+PAGE_SIZE);
+                if(shown>=entries.length)io.disconnect();
+              }
+            });
+          },{rootMargin:"200px"});
+          io.observe(sentinel);
+        }else{
+          sentinel.addEventListener("scroll",function(){});
+        }
+      }
     }
   });
 }
