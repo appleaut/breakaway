@@ -65,7 +65,7 @@ def main():
     
     # Save PNG
     png_data = create_png(width, height, pixels)
-    with open('/opt/data/home/breakaway/public/banner.png', 'wb') as f:
+    with open('/home/dev/.hermes/home/breakaway/public/banner.png', 'wb') as f:
         f.write(png_data)
     print("Banner created successfully!")
 

@@ -57,6 +57,6 @@ for x, y in arrows:
     draw.polygon([(x, y), (x-10, y+20), (x+10, y+20)], fill=(255, 255, 255, 50))
 
 # Save image
-output_path = '/opt/data/home/breakaway/public/banner.png'
+output_path = '/home/dev/.hermes/home/breakaway/public/banner.png'
 img.save(output_path, 'PNG')
 print(f"Image saved to: {output_path}")
